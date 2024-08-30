@@ -1,0 +1,433 @@
+<html><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TESAA - Microfinance Institutions</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --primary-color: #3498db;
+        --secondary-color: #2ecc71;
+        --accent-color: #f39c12;
+        --text-color: #333333;
+        --light-bg: #f8f9fa;
+        --dark-bg: #2c3e50;
+      }
+    
+      body {
+        font-family: 'Poppins', sans-serif;
+        color: var(--text-color);
+        background-color: var(--light-bg);
+        font-size: 18px;
+        margin: 20px;
+      }
+    
+      .navbar {
+        background-color: var(--dark-bg) !important;
+        padding: 1rem 0;
+        margin: 0 20px;
+      }
+      .navbar-brand {
+        font-size: 2.2rem;
+        font-weight: 700;
+        color: #3498db !important;
+        margin-right: auto;
+      }
+      .navbar-brand, .nav-link {
+        color: white !important;
+      }
+    
+      .nav-link {
+        font-weight: 500;
+        transition: color 0.3s ease;
+        font-size: 1.1rem;
+      }
+    
+      .nav-link:hover {
+        color: var(--accent-color) !important;
+      }
+    
+      .btn-primary {
+        background-color: var(--primary-color);
+        border-color: var(--primary-color);
+        transition: all 0.3s ease;
+      }
+    
+      .btn-secondary {
+        background-color: var(--secondary-color);
+        border-color: var(--secondary-color);
+        transition: all 0.3s ease;
+      }
+    
+      .btn-primary:hover, .btn-secondary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      }
+    
+      .card {
+        border: none;
+        border-radius: 15px;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        overflow: hidden;
+      }
+    
+      .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+      }
+    
+      .feature-icon {
+        font-size: 3.5rem;
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+      }
+    
+      footer {
+        background-color: var(--dark-bg);
+        color: white;
+        padding: 3rem 0;
+        margin: 20px;
+      }
+    
+      .social-icon {
+        font-size: 1.8rem;
+        margin: 0 10px;
+        color: white;
+        transition: color 0.3s ease;
+      }
+    
+      .social-icon:hover {
+        color: var(--accent-color);
+      }
+    
+      h2 {
+        font-size: 2.5rem;
+        margin-bottom: 2rem;
+      }
+    
+      h3 {
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+      }
+    
+      p {
+        font-size: 1.1rem;
+        line-height: 1.8;
+      }
+    
+      .mfi-logo {
+        max-width: 100px;
+        height: auto;
+        margin-bottom: 1rem;
+      }
+    
+      .modal-dialog {
+        max-width: 800px;
+      }
+    
+      .loan-package {
+        border-bottom: 1px solid #dee2e6;
+        padding-bottom: 1rem;
+        margin-bottom: 1rem;
+      }
+    
+      .loan-package:last-child {
+        border-bottom: none;
+      }
+    
+      @media (max-width: 768px) {
+        body {
+          font-size: 16px;
+        }
+      }
+    </style>
+    </head>
+    <body>
+      <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="/">TESAA</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="/">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#about">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#mfi-list">MFI List</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#contact">Contact</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    
+      <header class="py-5 bg-light text-center" style="margin-top: 96px;">
+        <div class="container">
+          <h1 class="display-4">Microfinance Institutions</h1>
+          <p class="lead">Discover our network of trusted microfinance partners</p>
+        </div>
+      </header>
+    
+      <main>
+        <section id="about" class="py-5">
+          <div class="container">
+            <h2 class="text-center mb-4">About Our MFI Network</h2>
+            <p class="text-center">TESAA partners with a diverse range of microfinance institutions (MFIs) to provide accessible financial services to underserved communities. Our network includes both established and emerging MFIs, all committed to fostering economic growth and financial inclusion.</p>
+          </div>
+        </section>
+    
+        <section id="mfi-list" class="py-5 bg-white">
+          <div class="container">
+            <h2 class="text-center mb-5">Our MFI Partners</h2>
+            <div class="row g-4">
+              <div class="col-md-4 col-sm-6">
+                <div class="card h-100">
+                  <div class="card-body text-center">
+                    <img src="/assets/equity.png" alt="Equity Bank Logo" class="mfi-logo">
+                    <h4>Equity Bank</h4>
+                    <p>Specializes in microloans for small businesses and agricultural projects.</p>
+                    <button class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#equityBankModal">View Loan Packages</button>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 col-sm-6">
+                <div class="card h-100">
+                  <div class="card-body text-center">
+                    <img src="/assets/women.png" alt="Kenya Women Microfinance Bank Logo" class="mfi-logo">
+                    <h4>Kenya Women Microfinance Bank</h4>
+                    <p>Focuses on empowering women entrepreneurs through tailored financial services.</p>
+                    <button class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#kwftModal">View Loan Packages</button>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 col-sm-6">
+                <div class="card h-100">
+                  <div class="card-body text-center">
+                    <img src="/assets/faulu.png" alt="Faulu Microfinance Bank Logo" class="mfi-logo">
+                    <h4>Faulu Microfinance Bank</h4>
+                    <p>Provides a wide range of financial products for individuals and SMEs.</p>
+                    <button class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#fauluModal">View Loan Packages</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+    
+        <section id="join-network" class="py-5 bg-light">
+          <div class="container text-center">
+            <h2 class="mb-4">Join Our MFI Network</h2>
+            <p class="lead mb-4">Are you a microfinance institution looking to expand your reach? Partner with TESAA to access our innovative platform and growing user base.</p>
+            <a href="/mfi-partnership" class="btn btn-primary btn-lg">Become a Partner</a>
+          </div>
+        </section>
+    
+        <section id="contact" class="py-5">
+          <div class="container">
+            <h2 class="text-center mb-5">Contact Us</h2>
+            <div class="row justify-content-center">
+              <div class="col-md-8">
+                <form>
+                  <div class="mb-3">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="name" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="message" class="form-label">Message</label>
+                    <textarea class="form-control" id="message" rows="5" required></textarea>
+                  </div>
+                  <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    
+      <footer class="py-4">
+        <div class="container">
+          <div class="row gy-4">
+            <div class="col-md-4">
+              <h5>TESAA</h5>
+              <p>Connecting microfinance institutions with borrowers for a brighter financial future.</p>
+            </div>
+            <div class="col-md-4">
+              <h5>Quick Links</h5>
+              <ul class="list-unstyled">
+                <li><a href="/about" class="text-white">About Us</a></li>
+                <li><a href="/how-it-works" class="text-white">How It Works</a></li>
+                <li><a href="/faq" class="text-white">FAQ</a></li>
+              </ul>
+            </div>
+            <div class="col-md-4">
+              <h5>Connect With Us</h5>
+              <div class="mt-3">
+                <a href="https://facebook.com/tesaa" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://twitter.com/tesaa" class="social-icon"><i class="fab fa-twitter"></i></a>
+                <a href="https://linkedin.com/company/tesaa" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://instagram.com/tesaa" class="social-icon"><i class="fab fa-instagram"></i></a>
+              </div>
+            </div>
+          </div>
+          <hr class="mt-4 mb-3">
+          <p class="text-center mb-0">&copy; 2024 TESAA. All rights reserved.</p>
+        </div>
+      </footer>
+    
+      <!-- Modal for Equity Bank -->
+      <div class="modal fade" id="equityBankModal" tabindex="-1" aria-labelledby="equityBankModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="equityBankModalLabel">Equity Bank Loan Packages</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="loan-package">
+                <h4>Business Loan</h4>
+                <p><strong>Description:</strong> Flexible financing for small and medium enterprises.</p>
+                <p><strong>Qualifications:</strong></p>
+                <ul>
+                  <li>Business must be operational for at least 6 months</li>
+                  <li>Valid business registration documents</li>
+                  <li>Bank statements for the last 6 months</li>
+                </ul>
+                <a href="/applyloan"  class="btn btn-primary">Apply Now</a>
+              </div>
+              <div class="loan-package">
+                <h4>Agricultural Loan</h4>
+                <p><strong>Description:</strong> Tailored financing for farmers and agribusinesses.</p>
+                <p><strong>Qualifications:</strong></p>
+                <ul>
+                  <li>Proof of land ownership or lease agreement</li>
+                  <li>Farm business plan</li>
+                  <li>Agricultural experience of at least 2 seasons</li>
+                </ul>
+                <a href="/applyloan" class="btn btn-primary">Apply Now</a>
+              </div>
+              <div class="loan-package">
+                <h4>Education Loan</h4>
+                <p><strong>Description:</strong> Financing for students pursuing higher education.</p>
+                <p><strong>Qualifications:</strong></p>
+                <ul>
+                  <li>Admission letter from recognized institution</li>
+                  <li>Academic transcripts</li>
+                  <li>Guarantor (parent or guardian)</li>
+                </ul>
+                <a href="/applyloan" class="btn btn-primary">Apply Now</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      <!-- Modal for Kenya Women Microfinance Bank -->
+      <div class="modal fade" id="kwftModal" tabindex="-1" aria-labelledby="kwftModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="kwftModalLabel">Kenya Women Microfinance Bank Loan Packages</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="loan-package">
+                <h4>Women Entrepreneur Loan</h4>
+                <p><strong>Description:</strong> Empowering women-owned businesses with tailored financing.</p>
+                <p><strong>Qualifications:</strong></p>
+                <ul>
+                  <li>Business owned/co-owned by a woman</li>
+                  <li>Business operational for at least 3 months</li>
+                  <li>Valid ID and business registration</li>
+                </ul>
+                <a href="/applyloan" class="btn btn-primary">Apply Now</a>
+              </div>
+              <div class="loan-package">
+                <h4>Group Savings and Loan</h4>
+                <p><strong>Description:</strong> Collective savings and lending for women's groups.</p>
+                <p><strong>Qualifications:</strong></p>
+                <ul>
+                  <li>Group of 5-30 members</li>
+                  <li>Regular savings for at least 3 months</li>
+                  <li>Group constitution and registration</li>
+                </ul>
+                <a href="/applyloan" class="btn btn-primary">Apply Now</a>
+              </div>
+              <div class="loan-package">
+                <h4>Asset Financing</h4>
+                <p><strong>Description:</strong> Loans for purchasing business assets and equipment.</p>
+                <p><strong>Qualifications:</strong></p>
+                <ul>
+                  <li>Proven business track record</li>
+                  <li>Quotation for the asset to be financed</li>
+                  <li>Business cash flow projections</li>
+                </ul>
+                <a href="/applyloan" class="btn btn-primary">Apply Now</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      <!-- Modal for Faulu Microfinance Bank -->
+      <div class="modal fade" id="fauluModal" tabindex="-1" aria-labelledby="fauluModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="fauluModalLabel">Faulu Microfinance Bank Loan Packages</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="loan-package">
+                <h4>SME Growth Loan</h4>
+                <p><strong>Description:</strong> Financing for small and medium enterprises looking to expand.</p>
+                <p><strong>Qualifications:</strong></p>
+                <ul>
+                  <li>Business operational for at least 1 year</li>
+                  <li>Audited financial statements</li>
+                  <li>Valid business licenses and permits</li>
+                </ul>
+                <a href="/applyloan" class="btn btn-primary">Apply Now</a>
+              </div>
+              <div class="loan-package">
+                <h4>Micro-Enterprise Loan</h4>
+                <p><strong>Description:</strong> Small loans for micro-entrepreneurs and informal businesses.</p>
+                <p><strong>Qualifications:</strong></p>
+                <ul>
+                  <li>Proof of business existence (at least 3 months)</li>
+                  <li>Valid ID</li>
+                  <li>Business location details</li>
+                </ul>
+                <a href="/applyloan" class="btn btn-primary">Apply Now</a>
+              </div>
+              <div class="loan-package">
+                <h4>Salary Advance</h4>
+                <p><strong>Description:</strong> Short-term loans for salaried employees.</p>
+                <p><strong>Qualifications:</strong></p>
+                <ul>
+                  <li>Employed for at least 3 months</li>
+                  <li>Salary processed through Faulu Bank</li>
+                  <li>Letter of introduction from employer</li>
+                </ul>
+                <a href="/applyloan" class="btn btn-primary">Apply Now</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
+    </html>

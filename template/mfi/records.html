@@ -1,0 +1,363 @@
+<html><head>
+    <title>MFI Dashboard Reports - Tesaa</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet">
+    <style>
+      body {
+        font-family: 'Roboto', sans-serif;
+        background-color: #f8f9fa;
+      }
+      .navbar-brand {
+        font-weight: bold;
+        color: #007bff !important;
+      }
+      .sidebar {
+        position: fixed;
+        top: 56px;
+        bottom: 0;
+        left: 0;
+        z-index: 100;
+        padding: 48px 0 0;
+        box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+      }
+      .sidebar-sticky {
+        position: relative;
+        top: 0;
+        height: calc(100vh - 48px);
+        padding-top: .5rem;
+        overflow-x: hidden;
+        overflow-y: auto;
+      }
+      .content {
+        margin-left: 240px;
+        padding: 2rem;
+      }
+      .card {
+        margin-bottom: 1rem;
+        border: none;
+        box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+      }
+    </style>
+    </head>
+    <body>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/">Tesaa</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <i class="fas fa-user-circle"></i> MFI Admin
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="/mfi-profile">Profile</a></li>
+                  <li><a class="dropdown-item" href="/mfi-settings">Settings</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="/logout">Logout</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    
+      <div class="container-fluid">
+        <div class="row">
+          <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+            <div class="sidebar-sticky pt-3">
+              <ul class="nav flex-column">
+                <li class="nav-item">
+                  <a class="nav-link" href="/mfi">
+                    <i class="fas fa-tachometer-alt"></i> Dashboard
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" href="/records">
+                    <i class="fas fa-chart-bar"></i> Reports
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+    
+          <main class="content col-md-9 ms-sm-auto col-lg-10 px-md-4">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+              <h1 class="h2">Reports Dashboard</h1>
+              <div class="btn-toolbar mb-2 mb-md-0">
+                <div class="btn-group me-2">
+                  <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
+                </div>
+                <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle" id="dateRangeDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                  <i class="fas fa-calendar"></i> This Month
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dateRangeDropdown">
+                  <li><a class="dropdown-item" href="#">This Week</a></li>
+                  <li><a class="dropdown-item" href="#">This Month</a></li>
+                  <li><a class="dropdown-item" href="#">This Quarter</a></li>
+                  <li><a class="dropdown-item" href="#">This Year</a></li>
+                  <li><a class="dropdown-item" href="#">Custom Range</a></li>
+                </ul>
+              </div>
+            </div>
+    
+            <div class="row">
+              <div class="col-md-6 col-lg-3 mb-4">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">Total Loans Disbursed</h5>
+                    <h2 class="card-text">Ksh. 1,250,000</h2>
+                    <p class="card-text text-success"><i class="fas fa-arrow-up"></i> 15% increase</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 col-lg-3 mb-4">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">Active Loans</h5>
+                    <h2 class="card-text">587</h2>
+                    <p class="card-text text-success"><i class="fas fa-arrow-up"></i> 8% increase</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 col-lg-3 mb-4">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">Repayment Rate</h5>
+                    <h2 class="card-text">95.8%</h2>
+                    <p class="card-text text-success"><i class="fas fa-arrow-up"></i> 2.3% increase</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 col-lg-3 mb-4">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">Portfolio at Risk</h5>
+                    <h2 class="card-text">3.2%</h2>
+                    <p class="card-text text-danger"><i class="fas fa-arrow-up"></i> 0.5% increase</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+    
+            <div class="row">
+              <div class="col-md-12 mb-4">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">Loan Disbursements Over Time</h5>
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th>Month</th>
+                          <th>Amount Disbursed</th>
+                          <th>Change</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>January</td>
+                          <td>Ksh. 150,000</td>
+                          <td>-</td>
+                        </tr>
+                        <tr>
+                          <td>February</td>
+                          <td>Ksh. 180,000</td>
+                          <td class="text-success">+20%</td>
+                        </tr>
+                        <tr>
+                          <td>March</td>
+                          <td>Ksh. 210,000</td>
+                          <td class="text-success">+16.7%</td>
+                        </tr>
+                        <tr>
+                          <td>April</td>
+                          <td>Ksh. 240,000</td>
+                          <td class="text-success">+14.3%</td>
+                        </tr>
+                        <tr>
+                          <td>May</td>
+                          <td>Ksh. 270,000</td>
+                          <td class="text-success">+12.5%</td>
+                        </tr>
+                        <tr>
+                          <td>June</td>
+                          <td>Ksh. 300,000</td>
+                          <td class="text-success">+11.1%</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+    
+            <div class="row">
+              <div class="col-md-6 mb-4">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">Loan Type Distribution</h5>
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th>Loan Type</th>
+                          <th>Percentage</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Micro-Enterprise</td>
+                          <td>40%</td>
+                        </tr>
+                        <tr>
+                          <td>Agriculture</td>
+                          <td>25%</td>
+                        </tr>
+                        <tr>
+                          <td>Education</td>
+                          <td>15%</td>
+                        </tr>
+                        <tr>
+                          <td>Women Empowerment</td>
+                          <td>12%</td>
+                        </tr>
+                        <tr>
+                          <td>Other</td>
+                          <td>8%</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 mb-4">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">Repayment Performance</h5>
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th>Month</th>
+                          <th>On-Time Repayments</th>
+                          <th>Late Repayments</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>January</td>
+                          <td>92%</td>
+                          <td>8%</td>
+                        </tr>
+                        <tr>
+                          <td>February</td>
+                          <td>94%</td>
+                          <td>6%</td>
+                        </tr>
+                        <tr>
+                          <td>March</td>
+                          <td>93%</td>
+                          <td>7%</td>
+                        </tr>
+                        <tr>
+                          <td>April</td>
+                          <td>95%</td>
+                          <td>5%</td>
+                        </tr>
+                        <tr>
+                          <td>May</td>
+                          <td>96%</td>
+                          <td>4%</td>
+                        </tr>
+                        <tr>
+                          <td>June</td>
+                          <td>97%</td>
+                          <td>3%</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+    
+            <div class="row">
+              <div class="col-md-12 mb-4">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">Monthly Transactions</h5>
+                    <p>Click on a month to download the transaction report.</p>
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th>Month</th>
+                          <th>Total Transactions</th>
+                          <th>Total Amount</th>
+                          <th>Download</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>January 2023</td>
+                          <td>1,254</td>
+                          <td>Ksh. 325,000</td>
+                          <td><a href="/download" class="btn btn-sm btn-primary"><i class="fas fa-download"></i> Download</a></td>
+                        </tr>
+                        <tr>
+                          <td>February 2023</td>
+                          <td>1,389</td>
+                          <td>Ksh. 362,000</td>
+                          <td><a href="/download" class="btn btn-sm btn-primary"><i class="fas fa-download"></i> Download</a></td>
+                        </tr>
+                        <tr>
+                          <td>March 2023</td>
+                          <td>1,512</td>
+                          <td>Ksh. 395,000</td>
+                          <td><a href="/download" class="btn btn-sm btn-primary"><i class="fas fa-download"></i> Download</a></td>
+                        </tr>
+                        <tr>
+                          <td>April 2023</td>
+                          <td>1,678</td>
+                          <td>Ksh. 437,000</td>
+                          <td><a href="/download" class="btn btn-sm btn-primary"><i class="fas fa-download"></i> Download</a></td>
+                        </tr>
+                        <tr>
+                          <td>May 2023</td>
+                          <td>1,845</td>
+                          <td>Ksh. 481,000</td>
+                          <td><a href="/download" class="btn btn-sm btn-primary"><i class="fas fa-download"></i> Download</a></td>
+                        </tr>
+                        <tr>
+                          <td>June 2023</td>
+                          <td>2,021</td>
+                          <td>Ksh. 527,000</td>
+                          <td><a href="/download" class="btn btn-sm btn-primary"><i class="fas fa-download"></i> Download</a></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </main>
+        </div>
+      </div>
+    
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          // Handle date range dropdown
+          document.querySelectorAll('#dateRangeDropdown + .dropdown-menu .dropdown-item').forEach(item => {
+            item.addEventListener('click', function(e) {
+              e.preventDefault();
+              document.querySelector('#dateRangeDropdown').textContent = this.textContent;
+              // TODO: Implement date range filtering functionality
+              console.log('Selected date range:', this.textContent);
+            });
+          });
+        });
+      </script>
+    </body>
+    </html>

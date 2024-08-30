@@ -1,0 +1,118 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "email": "test@example.com",
+      "password": "100",
+      "institution_type": "business",
+      "loans": [
+        {
+          "id": "loan-1",
+          "date": "2024-07-31",
+          "amount": "14",
+          "purpose": "Business",
+          "status": "pending"
+        },
+        {
+          "id": "loan-2",
+          "date": "2024-07-31",
+          "amount": "12335",
+          "purpose": "Business",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "email": "example@test.com",
+      "password": "200",
+      "institution_type": "microfinance"
+    },
+    {
+      "id": "9928",
+      "institution_type": "",
+      "email": "",
+      "password": "",
+      "confirm_pass": "",
+      "type": "",
+      "years": "",
+      "license": "",
+      "kra": "",
+      "phone": ""
+    },
+    {
+      "id": "9a64",
+      "institution_type": "business",
+      "email": "test77@example.com",
+      "password": "123",
+      "confirm_pass": "123",
+      "type": "Entertainment",
+      "years": "5",
+      "license": "2233RRTED",
+      "kra": "0A78883JKL",
+      "phone": "2233445"
+    },
+    {
+      "id": "",
+      "email": "x@x.com",
+      "password": "kenyan",
+      "institution_type": "",
+      "account_type": "business",
+      "confirm_pass": "dee",
+      "type": "fefe",
+      "years": "23",
+      "license": "cdscs",
+      "kra": "23A",
+      "phone": "12345733"
+    },
+    {
+      "id": "",
+      "email": "tes@c.com",
+      "password": "123",
+      "institution_type": "",
+      "account_type": "business",
+      "confirm_pass": "123",
+      "type": "Entertainment",
+      "years": "12",
+      "license": "na",
+      "kra": "12",
+      "phone": "2"
+    },
+    {
+      "id": "12345",
+      "email": "user@example.com",
+      "password": "securepassword",
+      "institution_type": "business",
+      "loans": [
+        {
+          "id": "loan1",
+          "date": "2024-07-30",
+          "amount": "10000",
+          "purpose": "Expansion",
+          "status": "Approved"
+        },
+        {
+          "id": "loan2",
+          "date": "2024-06-15",
+          "amount": "5000",
+          "purpose": "Equipment",
+          "status": "Approved"
+        },
+        {
+          "id": "loan-3",
+          "date": "2024-07-31",
+          "amount": "345",
+          "purpose": "Business",
+          "status": "pending"
+        },
+        {
+          "id": "loan-4",
+          "date": "2024-07-31",
+          "amount": "500",
+          "purpose": "Business",
+          "status": "pending"
+        }
+      ]
+    }
+  ]
+}
