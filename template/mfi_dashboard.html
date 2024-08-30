@@ -1,0 +1,359 @@
+<html><head>
+    <title>MFI Dashboard - Tesaa</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+      body {
+        font-family: 'Roboto', sans-serif;
+        background-color: #f8f9fa;
+      }
+      .navbar-brand {
+        font-weight: bold;
+        color: #007bff !important;
+      }
+      .sidebar {
+        position: fixed;
+        top: 56px;
+        bottom: 0;
+        left: 0;
+        z-index: 100;
+        padding: 48px 0 0;
+        box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+      }
+      .sidebar-sticky {
+        position: relative;
+        top: 0;
+        height: calc(100vh - 48px);
+        padding-top: .5rem;
+        overflow-x: hidden;
+        overflow-y: auto;
+      }
+      .dashboard-content {
+        margin-left: 240px;
+        padding: 2rem;
+      }
+      .card {
+        margin-bottom: 1rem;
+        border: none;
+        box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+      }
+      .card-header {
+        background-color: #f8f9fa;
+        border-bottom: none;
+      }
+      .stat-card {
+        text-align: center;
+        padding: 1rem;
+      }
+      .stat-card i {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+      }
+      .stat-card .stat-value {
+        font-size: 1.5rem;
+        font-weight: bold;
+      }
+      .stat-card .stat-label {
+        font-size: 0.9rem;
+        color: #6c757d;
+      }
+      .loan-type-card {
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        padding: 1rem;
+        margin-bottom: 1rem;
+      }
+      .loan-type-card h5 {
+        margin-bottom: 0.5rem;
+      }
+      .loan-type-card p {
+        margin-bottom: 0.25rem;
+      }
+    </style>
+    </head>
+    <body>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/">Tesaa</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <i class="fas fa-user-circle"></i> MFI Admin
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="/mfi-profile">Profile</a></li>
+                  <li><a class="dropdown-item" href="/mfi-settings">Settings</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="/logout">Logout</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    
+      <div class="container-fluid">
+        <div class="row">
+          <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+            <div class="sidebar-sticky pt-3">
+              <ul class="nav flex-column">
+                <li class="nav-item">
+                  <a class="nav-link active" href="/mfi">
+                    <i class="fas fa-tachometer-alt"></i> Dashboard
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/records">
+                    <i class="fas fa-chart-bar"></i> Reports
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+    
+          <main class="dashboard-content col-md-9 ms-sm-auto col-lg-10 px-md-4">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+              <h1 class="h2">MFI Dashboard</h1>
+              <div class="btn-toolbar mb-2 mb-md-0">
+                <div class="btn-group me-2">
+                  <button type="button" class="btn btn-sm btn-outline-secondary" id="exportDashboardPDF">Export PDF</button>
+                </div>
+                <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle" id="dateRangeDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                  <i class="fas fa-calendar"></i> This Month
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dateRangeDropdown">
+                  <li><a class="dropdown-item" href="#">Today</a></li>
+                  <li><a class="dropdown-item" href="#">This Week</a></li>
+                  <li><a class="dropdown-item" href="#">This Month</a></li>
+                  <li><a class="dropdown-item" href="#">This Quarter</a></li>
+                  <li><a class="dropdown-item" href="#">This Year</a></li>
+                </ul>
+              </div>
+            </div>
+    
+            <div class="row">
+              <div class="col-md-3">
+                <div class="card stat-card">
+                  <i class="fas fa-users text-primary"></i>
+                  <div class="stat-value">1,245</div>
+                  <div class="stat-label">Active Borrowers</div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="card stat-card">
+                  <i class="fas fa-hand-holding-usd text-success"></i>
+                  <div class="stat-value">Ksh. 2.5M</div>
+                  <div class="stat-label">Total Loan Portfolio</div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="card stat-card">
+                  <i class="fas fa-percentage text-info"></i>
+                  <div class="stat-value">97.8%</div>
+                  <div class="stat-label">Repayment Rate</div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="card stat-card">
+                  <i class="fas fa-exclamation-triangle text-warning"></i>
+                  <div class="stat-value">2.3%</div>
+                  <div class="stat-label">Portfolio at Risk (PAR30)</div>
+                </div>
+              </div>
+            </div>
+    
+            <div class="row mt-4">
+              <div class="col-md-6">
+                <div class="card">
+                  <div class="card-header">
+                    <h5 class="card-title">Recent Transactions</h5>
+                  </div>
+                  <div class="card-body">
+                    <div class="table-responsive">
+                      <table class="table table-striped table-sm">
+                        <thead>
+                          <tr>
+                            <th>Transaction ID</th>
+                            <th>Type</th>
+                            <th>Amount</th>
+                            <th>Date</th>
+                            <th>Status</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>TRX001</td>
+                            <td>Loan Disbursement</td>
+                            <td>Ksh. 5,000</td>
+                            <td>2023-04-15</td>
+                            <td><span class="badge bg-success">Completed</span></td>
+                          </tr>
+                          <tr>
+                            <td>TRX002</td>
+                            <td>Repayment</td>
+                            <td>Ksh. 250</td>
+                            <td>2023-04-16</td>
+                            <td><span class="badge bg-success">Completed</span></td>
+                          </tr>
+                          <tr>
+                            <td>TRX003</td>
+                            <td>Loan Disbursement</td>
+                            <td>Ksh. 3,500</td>
+                            <td>2023-04-17</td>
+                            <td><span class="badge bg-warning">Pending</span></td>
+                          </tr>
+                          <tr>
+                            <td>TRX004</td>
+                            <td>Repayment</td>
+                            <td>Ksh. 500</td>
+                            <td>2023-04-18</td>
+                            <td><span class="badge bg-success">Completed</span></td>
+                          </tr>
+                          <tr>
+                            <td>TRX005</td>
+                            <td>Loan Disbursement</td>
+                            <td>Ksh. 2,000</td>
+                            <td>2023-04-19</td>
+                            <td><span class="badge bg-success">Completed</span></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="card">
+                  <div class="card-header">
+                    <h5 class="card-title">Loan Types Offered</h5>
+                  </div>
+                  <div class="card-body">
+                    <div class="loan-type-card">
+                      <h5>Micro-Enterprise Loan</h5>
+                      <p><strong>Interest Rate:</strong> 12% p.a.</p>
+                      <p><strong>Loan Term:</strong> 6 - 24 months</p>
+                      <p><strong>Loan Amount:</strong> Ksh. 500 - Ksh. 5,000</p>
+                    </div>
+                    <div class="loan-type-card">
+                      <h5>Agriculture Loan</h5>
+                      <p><strong>Interest Rate:</strong> 10% p.a.</p>
+                      <p><strong>Loan Term:</strong> 3 - 12 months</p>
+                      <p><strong>Loan Amount:</strong> Ksh. 200 - Ksh. 3,000</p>
+                    </div>
+                    <div class="loan-type-card">
+                      <h5>Education Loan</h5>
+                      <p><strong>Interest Rate:</strong> 8% p.a.</p>
+                      <p><strong>Loan Term:</strong> 12 - 36 months</p>
+                      <p><strong>Loan Amount:</strong> Ksh. 1,000 - Ksh. 10,000</p>
+                    </div>
+                    <div class="loan-type-card">
+                      <h5>Women Empowerment Loan</h5>
+                      <p><strong>Interest Rate:</strong> 9% p.a.</p>
+                      <p><strong>Loan Term:</strong> 6 - 18 months</p>
+                      <p><strong>Loan Amount:</strong> Ksh. 300 - Ksh. 2,500</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+    
+            <div class="row mt-4">
+              <div class="col-md-12">
+                <div class="card">
+                  <div class="card-header">
+                    <h5 class="card-title">Recent Loan Applications</h5>
+                  </div>
+                  <div class="card-body">
+                    <div class="table-responsive">
+                      <table class="table table-striped table-sm">
+                        <thead>
+                          <tr>
+                            <th>Application ID</th>
+                            <th>Borrower Name</th>
+                            <th>Loan Amount</th>
+                            <th>Purpose</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>APP001</td>
+                            <td>John Doe</td>
+                            <td>Ksh. 5,000</td>
+                            <td>Business Expansion</td>
+                            <td><span class="badge bg-warning">Pending</span></td>
+                            <td><button class="btn btn-sm btn-primary">Review</button></td>
+                          </tr>
+                          <tr>
+                            <td>APP002</td>
+                            <td>Jane Smith</td>
+                            <td>Ksh. 3,500</td>
+                            <td>Education</td>
+                            <td><span class="badge bg-success">Approved</span></td>
+                            <td><button class="btn btn-sm btn-secondary">Details</button></td>
+                          </tr>
+                          <tr>
+                            <td>APP003</td>
+                            <td>Bob Johnson</td>
+                            <td>Ksh. 7,000</td>
+                            <td>Agriculture</td>
+                            <td><span class="badge bg-info">Under Review</span></td>
+                            <td><button class="btn btn-sm btn-primary">Review</button></td>
+                          </tr>
+                          <tr>
+                            <td>APP004</td>
+                            <td>Alice Brown</td>
+                            <td>Ksh. 2,000</td>
+                            <td>Home Improvement</td>
+                            <td><span class="badge bg-danger">Rejected</span></td>
+                            <td><button class="btn btn-sm btn-secondary">Details</button></td>
+                          </tr>
+                          <tr>
+                            <td>APP005</td>
+                            <td>Charlie Davis</td>
+                            <td>Ksh. 4,500</td>
+                            <td>Small Business</td>
+                            <td><span class="badge bg-warning">Pending</span></td>
+                            <td><button class="btn btn-sm btn-primary">Review</button></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </main>
+        </div>
+      </div>
+    
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          // Handle export dashboard PDF button
+          document.getElementById('exportDashboardPDF').addEventListener('click', function() {
+            alert('Exporting Dashboard as PDF...');
+            // TODO: Implement PDF export functionality
+          });
+    
+          // Handle date range dropdown
+          document.querySelectorAll('#dateRangeDropdown + .dropdown-menu .dropdown-item').forEach(item => {
+            item.addEventListener('click', function(e) {
+              e.preventDefault();
+              document.getElementById('dateRangeDropdown').textContent = this.textContent;
+              // TODO: Implement date range filtering functionality
+              console.log('Selected date range:', this.textContent);
+            });
+          });
+        });
+      </script>
+    </body>
+    </html>

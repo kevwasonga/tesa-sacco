@@ -1,0 +1,246 @@
+<html>
+  <head>
+<title>Business Transactions - Tesaa</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet">
+<link href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+<style>
+  body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f8f9fa;
+  }
+  .navbar-brand {
+    font-weight: bold;
+    color: #007bff !important;
+  }
+  .sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+    padding: 48px 0 0;
+    box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+  }
+  .sidebar-sticky {
+    position: relative;
+    top: 0;
+    height: calc(100vh - 48px);
+    padding-top: .5rem;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+  .sidebar .nav-link {
+    font-weight: 500;
+    color: #333;
+  }
+  .sidebar .nav-link.active {
+    color: #007bff;
+  }
+  .main-content {
+    margin-left: 240px;
+    padding: 2rem;
+  }
+  .card {
+    margin-bottom: 1.5rem;
+  }
+  .transaction-positive {
+    color: #28a745;
+  }
+  .transaction-negative {
+    color: #dc3545;
+  }
+</style>
+</head>
+<body>
+  <nav class="navbar navbar-light bg-light fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">Tesaa</a>
+      <div class="d-flex">
+        <span class="navbar-text me-3">Welcome, John's Small Business</span>
+        <a href="/logout" class="btn btn-outline-primary">Logout</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container-fluid">
+    <div class="row">
+      <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
+        <div class="sidebar-sticky">
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a class="nav-link" href="/business">
+                <i class='bx bxs-dashboard'></i>
+                Dashboard
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/loan-application">
+                <i class='bx bx-file'></i>
+                Loan Applications
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/active-loans">
+                <i class='bx bx-money'></i>
+                Active Loans
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="/business-transactions">
+                <i class='bx bx-transfer'></i>
+                Transactions
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/business-profile">
+                <i class='bx bx-user'></i>
+                Profile
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <main class="main-content col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+          <h1 class="h2">Transactions</h1>
+        </div>
+
+        <div class="row mb-4">
+          <div class="col-md-3">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Total Inflow</h5>
+                <h3 class="card-text transaction-positive">Ksh. 15,000.00</h3>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Total Outflow</h5>
+                <h3 class="card-text transaction-negative">Ksh. 3,825.00</h3>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Net Flow</h5>
+                <h3 class="card-text transaction-positive">Ksh. 11,175.00</h3>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Pending Transactions</h5>
+                <h3 class="card-text">2</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Transaction History</h5>
+            <table id="transactionTable" class="table table-striped table-hover">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Description</th>
+                  <th>Type</th>
+                  <th>Amount</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>2023-05-01</td>
+                  <td>Loan Repayment</td>
+                  <td>Outflow</td>
+                  <td class="transaction-negative">-Ksh. 750.00</td>
+                  <td><span class="badge bg-success">Completed</span></td>
+                </tr>
+                <tr>
+                  <td>2023-04-15</td>
+                  <td>Loan Disbursement</td>
+                  <td>Inflow</td>
+                  <td class="transaction-positive">Ksh. 10,000.00</td>
+                  <td><span class="badge bg-success">Completed</span></td>
+                </tr>
+                <tr>
+                  <td>2023-04-01</td>
+                  <td>Loan Repayment</td>
+                  <td>Outflow</td>
+                  <td class="transaction-negative">-Ksh. 750.00</td>
+                  <td><span class="badge bg-success">Completed</span></td>
+                </tr>
+                <tr>
+                  <td>2023-03-15</td>
+                  <td>Loan Application Fee</td>
+                  <td>Outflow</td>
+                  <td class="transaction-negative">-Ksh. 50.00</td>
+                  <td><span class="badge bg-success">Completed</span></td>
+                </tr>
+                <tr>
+                  <td>2023-03-01</td>
+                  <td>Loan Repayment</td>
+                  <td>Outflow</td>
+                  <td class="transaction-negative">-Ksh. 750.00</td>
+                  <td><span class="badge bg-success">Completed</span></td>
+                </tr>
+                <tr>
+                  <td>2023-02-15</td>
+                  <td>Late Payment Fee</td>
+                  <td>Outflow</td>
+                  <td class="transaction-negative">-Ksh. 25.00</td>
+                  <td><span class="badge bg-success">Completed</span></td>
+                </tr>
+                <tr>
+                  <td>2023-02-05</td>
+                  <td>Loan Repayment</td>
+                  <td>Outflow</td>
+                  <td class="transaction-negative">-Ksh. 750.00</td>
+                  <td><span class="badge bg-warning">Late</span></td>
+                </tr>
+                <tr>
+                  <td>2023-01-15</td>
+                  <td>Loan Disbursement</td>
+                  <td>Inflow</td>
+                  <td class="transaction-positive">Ksh. 5,000.00</td>
+                  <td><span class="badge bg-success">Completed</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap5.min.js"></script>
+  <script>
+   $(document).ready(function() {
+     $('#transactionTable').DataTable({
+        order: [[0, 'desc']],
+        pageLength: 10,
+        lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
+        language: {
+          search: "Search transactions:",
+          lengthMenu: "Show _MENU_ transactions per page",
+          info: "Showing _START_ to _END_ of _TOTAL_ transactions",
+          infoEmpty: "Showing 0 to 0 of 0 transactions",
+          infoFiltered: "(filtered from _MAX_ total transactions)"
+        }
+      });
+    });
+  </script>
+</body>
+</html>

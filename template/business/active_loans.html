@@ -1,0 +1,491 @@
+<html>
+  <head>
+    <title>Business Transactions - Tesaa</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/boxicons@2.0.7/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap5.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Roboto", sans-serif;
+        background-color: #f8f9fa;
+      }
+
+      .navbar-brand {
+        font-weight: bold;
+        color: #007bff !important;
+      }
+
+      .sidebar {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 100;
+        padding: 48px 0 0;
+        box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.1);
+      }
+
+      .sidebar-sticky {
+        position: relative;
+        top: 0;
+        height: calc(100vh - 48px);
+        padding-top: 0.5rem;
+        overflow-x: hidden;
+        overflow-y: auto;
+      }
+
+      .sidebar .nav-link {
+        font-weight: 500;
+        color: #333;
+      }
+
+      .sidebar .nav-link.active {
+        color: #007bff;
+      }
+
+      .main-content {
+        margin-left: 240px;
+        padding: 2rem;
+      }
+
+      .card {
+        margin-bottom: 1.5rem;
+      }
+
+      .transaction-positive {
+        color: #28a745;
+      }
+
+      .transaction-negative {
+        color: #dc3545;
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-light dark-bg">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">Tesaa</a>
+        <div class="d-flex">
+          <span class="navbar-text me-3">Welcome, John's Small Business</span>
+          <a href="/logout" class="btn btn-outline-primary">Logout</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row">
+        <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
+          <div class="sidebar-sticky">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link" href="/business">
+                  <i class="bx bxs-dashboard"></i>
+                  Dashboard
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/loan-application">
+                  <i class="bx bx-file"></i>
+                  Loan Applications
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="/active-loans">
+                  <i class="bx bx-money"></i>
+                  Active Loans
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/business-transactions">
+                  <i class="bx bx-transfer"></i>
+                  Transactions
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/business-profile">
+                  <i class="bx bx-user"></i>
+                  Profile
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+
+        <main class="main-content col-md-9 ms-sm-auto col-lg-10 px-md-4">
+          <div
+            class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
+          >
+            <h1 class="h2">Active Loans</h1>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Loan #1: Equipment Upgrade</h5>
+                  <div class="progress mb-3">
+                    <div
+                      class="progress-bar bg-success"
+                      role="progressbar"
+                      style="width: 40%"
+                      aria-valuenow="40"
+                      aria-valuemin="0"
+                      aria-valuemax="100"
+                    >
+                      40% Repaid
+                    </div>
+                  </div>
+                  <div class="loan-details">
+                    <p><strong>Loan Amount:</strong> Ksh. 10,000</p>
+                    <p><strong>Interest Rate:</strong> 8% per annum</p>
+                    <p><strong>Term:</strong> 24 months</p>
+                    <p><strong>Monthly Payment:</strong> Ksh. 452.73</p>
+                    <p><strong>Next Payment Due:</strong> May 15, 2023</p>
+                    <p><strong>Remaining Balance:</strong> Ksh. 6,000</p>
+                  </div>
+                  <button
+                    class="btn btn-primary mt-3"
+                    data-bs-toggle="modal"
+                    data-bs-target="#paymentModal1"
+                  >
+                    Make a Payment
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Loan #2: Working Capital</h5>
+                  <div class="progress mb-3">
+                    <div
+                      class="progress-bar bg-success"
+                      role="progressbar"
+                      style="width: 60%"
+                      aria-valuenow="60"
+                      aria-valuemin="0"
+                      aria-valuemax="100"
+                    >
+                      60% Repaid
+                    </div>
+                  </div>
+                  <div class="loan-details">
+                    <p><strong>Loan Amount:</strong> Ksh. 5,000</p>
+                    <p><strong>Interest Rate:</strong> 7% per annum</p>
+                    <p><strong>Term:</strong> 12 months</p>
+                    <p><strong>Monthly Payment:</strong> Ksh. 433.33</p>
+                    <p><strong>Next Payment Due:</strong> May 20, 2023</p>
+                    <p><strong>Remaining Balance:</strong> Ksh. 2,000</p>
+                  </div>
+                  <button
+                    class="btn btn-primary mt-3"
+                    data-bs-toggle="modal"
+                    data-bs-target="#paymentModal2"
+                  >
+                    Make a Payment
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row mt-4">
+            <div class="col-md-12">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Loan Repayment Schedule</h5>
+                  <div class="table-responsive">
+                    <table class="table table-striped table-hover">
+                      <thead>
+                        <tr>
+                          <th>Date</th>
+                          <th>Loan</th>
+                          <th>Payment Amount</th>
+                          <th>Principal</th>
+                          <th>Interest</th>
+                          <th>Remaining Balance</th>
+                          <th>Status</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>May 15, 2023</td>
+                          <td>Equipment Upgrade</td>
+                          <td>Ksh. 452.73</td>
+                          <td>Ksh. 385.73</td>
+                          <td>Ksh. 67.00</td>
+                          <td>Ksh. 5,614.27</td>
+                          <td>
+                            <span class="badge bg-warning">Upcoming</span>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>May 20, 2023</td>
+                          <td>Working Capital</td>
+                          <td>Ksh. 433.33</td>
+                          <td>Ksh. 404.33</td>
+                          <td>Ksh. 29.00</td>
+                          <td>Ksh. 1,595.67</td>
+                          <td>
+                            <span class="badge bg-warning">Upcoming</span>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Apr 15, 2023</td>
+                          <td>Equipment Upgrade</td>
+                          <td>Ksh. 452.73</td>
+                          <td>Ksh. 383.16</td>
+                          <td>Ksh. 69.57</td>
+                          <td>Ksh. 6,000.00</td>
+                          <td><span class="badge bg-success">Paid</span></td>
+                        </tr>
+                        <tr>
+                          <td>Apr 20, 2023</td>
+                          <td>Working Capital</td>
+                          <td>Ksh. 433.33</td>
+                          <td>Ksh. 401.63</td>
+                          <td>Ksh. 31.70</td>
+                          <td>Ksh. 2,000.00</td>
+                          <td><span class="badge bg-success">Paid</span></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <!-- Payment Modal for Loan #1 -->
+    <div
+      class="modal fade"
+      id="paymentModal1"
+      tabindex="-1"
+      aria-labelledby="paymentModal1Label"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="paymentModal1Label">
+              Make a Payment - Equipment Upgrade Loan
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="mb-3">
+                <label for="paymentAmount1" class="form-label"
+                  >Payment Amount</label
+                >
+                <input
+                  type="number"
+                  class="form-control"
+                  id="paymentAmount"
+                  min="0"
+                  step="0.01"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="paymentMethod1" class="form-label"
+                  >Payment Method</label
+                >
+                <select class="form-select" id="paymentMethod1">
+                  <option value="Mpesa">Mpesa</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="mpesa number" class="form-label"
+                  >Mpesa number</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="mpesa"
+                  name="mpesa"
+                  required
+                />
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              onclick="makePayment(1)"
+            >
+              Confirm Payment
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Payment Modal for Loan #2 -->
+    <div
+      class="modal fade"
+      id="paymentModal2"
+      tabindex="-1"
+      aria-labelledby="paymentModal2Label"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="paymentModal2Label">
+              Make a Payment - Working Capital Loan
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="mb-3">
+                <label for="paymentAmount2" class="form-label"
+                  >Payment Amount</label
+                >
+                <input
+                  type="number"
+                  class="form-control"
+                  id="paymentAmount2"
+                  min="0"
+                  step="0.01"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="paymentMethod2" class="form-label"
+                  >Payment Method</label
+                >
+                <select class="form-select" id="paymentMethod2">
+                  <option value="Mpesa">Mpesa</option>
+                </select>
+                <div class="mb-3">
+                  <label for="mpesa number" class="form-label"
+                    >Mpesa number</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="mpesa2"
+                    name="mpesa"
+                    required
+                  />
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              onclick="makePayment(2)"
+            >
+              Confirm Payment
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      function makePayment(loanId) {
+        const amountElement = document.getElementById(`paymentAmount${loanId}`);
+        const methodElement = document.getElementById(`paymentMethod${loanId}`);
+        const modalElement = document.getElementById(`paymentModal${loanId}`);
+
+        // Collect data from the form
+        var amount = document.getElementById("paymentAmount").value;
+        var phoneNumber = document.getElementById("mpesa").value;
+
+        if (loanId ==2){
+          amount = document.getElementById("paymentAmount2").value;
+          phoneNumber = document.getElementById("mpesa2").value;
+        }
+
+
+        // Send data to the Go server
+        fetch("/make-payment", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+          body: new URLSearchParams({
+            amount: amount,
+            phoneNumber: phoneNumber,
+          }),
+        })
+          .then((response) => response.text())
+          .then((data) => {
+            // Handle successful response
+            alert("Payment request sent successfully: " + data);
+          })
+          .catch((error) => {
+            // Handle error
+            console.error("Error:", error);
+            alert("Failed to send payment request.");
+          });
+
+        // Check if elements exist
+        if (!amountElement || !methodElement || !modalElement) {
+          console.error("One or more elements not found.");
+          return;
+        }
+
+        // Here you would typically send this data to your server to process the payment
+        console.log(
+          `Processing payment for Loan ${loanId}: $${amount} via ${method}`
+        );
+
+        // For demo purposes, we'll just show an alert
+        alert(
+          `You will receive a prompt on your phone to complete the transaction via ${method}`
+        );
+
+        // Close the modal
+        const modal = bootstrap.Modal.getInstance(modalElement);
+        if (modal) {
+          modal.hide();
+        }
+      }
+    </script>
+  </body>
+</html>
